@@ -1,0 +1,15 @@
+# Ignore the secret environment variables
+.env
+
+# Ignore the virtual environment (the source of those 10,000 files!)
+.venv/
+venv/
+env/
+
+# Ignore Python bytecode and cache
+__pycache__/
+*.py[cod]
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
