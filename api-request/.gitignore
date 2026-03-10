@@ -1,0 +1,31 @@
+# --- Python & Environment ---
+.env
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# --- dbt (Data Build Tool) ---
+# Ignore the target directory which contains compiled SQL
+dbt/target/
+# Ignore dbt logs
+dbt/logs/
+# Ignore dbt packages (installed via dbt deps)
+dbt/dbt_packages/
+# Ignore local profiles (if you keep profiles.yml in the project)
+dbt/profiles.yml
+
+# --- Airflow ---
+# Ignore the local SQLite DB if running Airflow locally
+airflow/*.db
+# Ignore Airflow logs
+airflow/logs/
+# Ignore Airflow PID files
+airflow/*.pid
+
+# --- OS Specific ---
+.DS_Store
+.idea/
+.vscode/
+*.swp
