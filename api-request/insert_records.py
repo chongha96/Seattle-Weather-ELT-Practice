@@ -5,6 +5,7 @@ from api_request import fetch_data
 
 load_dotenv()
 
+#Creates a connection to the PostgreSQL db
 def connect_to_db():
     print("Connecting to PostgresQL DB...")
     try:
@@ -20,7 +21,7 @@ def connect_to_db():
         print(f"Database failed to connect: {e}")
         raise
 
-
+#Creates the table for the data to injested. Also creates the schema
 def create_table(conn):
     print("Creating table if not exist...")
     try:
@@ -44,10 +45,11 @@ def create_table(conn):
         print(f"Failed to create table: {e}")
         raise
 
-
+#Inserts the records from the request
 def insert_records(conn, data):
     try:
         print("Inserting data")
+        #Assigning weather and location from the object for visual clarity in insertion
         weather = data['current']
         location = data['location']
         with conn.cursor() as cursor:

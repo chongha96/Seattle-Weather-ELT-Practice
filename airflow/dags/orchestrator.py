@@ -17,12 +17,12 @@ default_args = {
 dag = DAG(
     dag_id='weather-api-dbt-orchestrator',
     default_args=default_args,
-    #How often the program will run
+    #Run the DAG task every hour
     schedule=timedelta(minutes=60),
     catchup=False
 )
 
-
+#Orchestrates the two tasks (Ingestion and Transformation) in sequential order
 with dag:
     task1 = PythonOperator(
         task_id='ingest_data_psql',
@@ -49,4 +49,5 @@ with dag:
         auto_remove='success'
     )
 
+    #Ensures that injestion occurs before transformation
     task1 >> task2
